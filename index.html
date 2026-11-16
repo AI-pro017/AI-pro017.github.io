@@ -100,13 +100,12 @@ a { color: inherit; }
 .parol img { display: block; width: 100%; transition: filter 0.8s; }
 .parol.tug img { animation: tug 0.6s ease; }
 @keyframes tug { 0% { transform: translateY(0); } 30% { transform: translateY(12px); } 65% { transform: translateY(-4px); } 100% { transform: translateY(0); } }
-.hint {
-  position: absolute; z-index: 4; top: calc(var(--bw) * 0.455 + var(--pw) * 0.75); left: calc(var(--bw) * 0.64 + var(--pw) + 14px);
-  font-family: var(--script); font-size: 1.05rem; color: var(--accent); transform: rotate(-5deg); pointer-events: none; white-space: nowrap;
-}
-.hint::before { content: '\2190  tap the parol for night'; }
-[data-theme="dark"] .hint::before { content: '\2190  tap again for sunrise'; }
+
 .parol:hover img { filter: drop-shadow(0 0 10px rgba(235,180,47,0.75)); }
+.parol::after { content: ''; position: absolute; left: 50%; top: 38%; width: 70%; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(235,180,47,0.55), transparent 70%); z-index: -1; animation: invite 2.4s ease-in-out infinite; }
+@keyframes invite { 0%, 100% { opacity: 0.25; scale: 0.9; } 50% { opacity: 1; scale: 1.5; } }
+.hero-text { pointer-events: none; }
+.hero-text > * { pointer-events: auto; }
 [data-theme="dark"] .parol img { filter: brightness(1.15) drop-shadow(0 0 14px rgba(255,205,90,0.95)) drop-shadow(0 0 40px rgba(255,190,70,0.55)); }
 .parol:focus-visible { outline: 2px dashed var(--coral); outline-offset: 6px; border-radius: 12px; }
 @keyframes swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
@@ -250,7 +249,6 @@ footer { position: relative; }
   .nav.open ul { display: flex; }
   :root { --bw: 62vw; }
   .parol { top: calc(var(--bw) * 0.5); left: calc(var(--bw) * 0.56); z-index: 4; }
-  .hint { top: calc(var(--bw) * 0.5 + var(--pw) * 0.8); left: calc(var(--bw) * 0.56 + var(--pw) + 8px); font-size: 0.95rem; }
   .hero { min-height: 0; }
   .hero-text { padding: calc(var(--bw) * 0.62 + 4.5rem) 1.25rem 2.5rem; max-width: none; }
   .hero-art { position: relative; }
@@ -270,7 +268,7 @@ footer { position: relative; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .parol, .vinta, .bay-vinta, .turtle, .stars::before { animation: none; }
+  .parol, .parol::after, .vinta, .bay-vinta, .turtle, .stars::before { animation: none; }
   .r { opacity: 1; transform: none; transition: none; }
 }
 </style>
@@ -302,7 +300,6 @@ footer { position: relative; }
   <button class="parol" id="themeBtn" aria-label="Switch between light and dark mode" title="Light the parol">
     <img src="assets/parol.webp" alt="">
   </button>
-  <span class="hint" aria-hidden="true"></span>
 
   <div class="hero-text">
     <p class="mabuhay">Mabuhay!</p>
