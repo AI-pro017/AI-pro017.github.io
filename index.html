@@ -31,7 +31,7 @@
   --night: linear-gradient(180deg, #060B1C 0%, #14204A 55%, #43305F 88%, #7A4560 100%);
   --dusk: #FCDDBE;
   --horizon: #F8BFA0;
-  --deep: #173456;
+  --deep: #193456;
   --bw: min(40vw, 470px);
   --wash-op: 0.34;
   --art-w: min(60vw, 960px);
@@ -138,7 +138,7 @@ a { color: inherit; }
 .moon { position: absolute; left: 54.7%; top: 21%; width: 17.2%; filter: drop-shadow(0 0 22px rgba(251,243,228,0.5)); transform: translateY(210%); opacity: 0; transition: transform 1.3s cubic-bezier(0.6, 0, 0.4, 1), opacity 0.3s linear; }
 [data-theme="dark"] .moon { transform: none; opacity: 1; transition: transform 1.6s cubic-bezier(0.3, 0, 0.3, 1) 0.7s, opacity 0.4s linear 0.7s; }
 .hero-art .sea { position: absolute; left: 0; right: calc(var(--art-w) * 0.95); bottom: 0; height: var(--sea-h);
-  background: #1D3863 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='80' fill='none' stroke='%23FBF3E4' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M30 26q7-8 14 0t14 0 14 0'/%3E%3Cpath d='M160 54q7-8 14 0t14 0 14 0 14 0'/%3E%3C/svg%3E") 0 60% / 260px 80px repeat-x; }
+  background: #1B3862 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='80' fill='none' stroke='%23FBF3E4' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M30 26q7-8 14 0t14 0 14 0'/%3E%3Cpath d='M160 54q7-8 14 0t14 0 14 0 14 0'/%3E%3C/svg%3E") 0 60% / 260px 80px repeat-x; }
 .vinta { --vw: clamp(96px, 11vw, 170px); position: absolute; left: calc((100vw - var(--art-w)) * 0.6); bottom: calc(var(--sea-h) - var(--vw) * 0.17); width: var(--vw); animation: bob 5s ease-in-out infinite; }
 @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
 
@@ -227,7 +227,7 @@ footer { position: relative; }
 .foot-sea {
   position: relative; color: var(--cream); overflow: hidden; margin-top: -1px;
   min-height: max(38vw, 430px); padding: 2.2rem clamp(1.25rem, 5vw, 3rem);
-  background: var(--deep) url(assets/undersea.webp) center bottom / max(100%, 760px) auto no-repeat;
+  background: var(--deep) url(assets/undersea.svg) center bottom / max(100%, 760px) auto no-repeat;
 }
 .foot-inner { position: relative; z-index: 2; display: flex; justify-content: center; gap: clamp(2rem, 8vw, 6rem); flex-wrap: wrap; }
 .foot-inner ul { list-style: none; }
@@ -296,9 +296,9 @@ footer { position: relative; }
 
 <header class="hero" id="home">
   <div class="stars"></div>
-  <img class="branch" src="assets/branch.webp" alt="" width="884" height="618">
+  <img class="branch" src="assets/branch.svg" alt="" width="884" height="618">
   <button class="parol" id="themeBtn" aria-label="Switch between light and dark mode" title="Light the parol">
-    <img src="assets/parol.webp" alt="">
+    <img src="assets/parol.svg" alt="">
   </button>
 
   <div class="hero-text">
@@ -314,10 +314,10 @@ footer { position: relative; }
 
   <div class="hero-art" aria-hidden="true">
     <div class="sea"></div>
-    <img class="vinta" src="assets/vinta.webp?v=2" alt="" width="826" height="541">
-    <img class="sun" src="assets/sun.webp" alt="" width="1376" height="768">
+    <img class="vinta" src="assets/vinta.svg" alt="" width="826" height="541">
+    <img class="sun" src="assets/sun.svg" alt="" width="1376" height="768">
     <div class="moon-box"><svg class="moon" viewBox="0 0 200 200"><use href="#moon"/></svg></div>
-    <img class="mayon" src="assets/hero.webp" alt="" width="1376" height="768">
+    <img class="mayon" src="assets/hero.svg" alt="" width="1376" height="768">
   </div>
 </header>
 
@@ -497,9 +497,9 @@ footer { position: relative; }
   <div class="bay" aria-hidden="true">
     <div class="bay-art">
       <svg class="moon bay-moon" viewBox="0 0 200 200"><use href="#moon"/></svg>
-      <img class="bay-sky" src="assets/bay-sky.webp" alt="" loading="lazy" width="1460" height="619">
-      <img class="bay-city" src="assets/bay.webp" alt="" loading="lazy" width="1460" height="619">
-      <img class="bay-vinta" src="assets/vinta.webp?v=2" alt="" loading="lazy" width="826" height="541">
+      <img class="bay-sky" src="assets/bay-sky.svg" alt="" loading="lazy" width="1460" height="619">
+      <img class="bay-city" src="assets/bay.svg" alt="" loading="lazy" width="1460" height="619">
+      <img class="bay-vinta" src="assets/vinta.svg" alt="" loading="lazy" width="826" height="541">
     </div>
   </div>
   <div class="foot-sea">
@@ -516,7 +516,7 @@ footer { position: relative; }
         <small>Salamat for visiting · Angeles, Philippines · 2026</small>
       </div>
     </div>
-    <img class="turtle" src="assets/turtle.webp" alt="" loading="lazy" width="420" height="411">
+    <img class="turtle" src="assets/turtle.svg" alt="" loading="lazy" width="420" height="411">
   </div>
 </footer>
 
