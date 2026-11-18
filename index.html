@@ -29,6 +29,7 @@
   --cream: #FBF3E4;
   --deep: #193456;
   --sea-top: #06182A;
+  --dusk: #EFA57C;
   --script: 'Kaushan Script', cursive;
 }
 :root[data-theme="dark"] {
@@ -41,6 +42,7 @@
   --accent: #F0C04A;
   --accent2: #5CC9BB;
   --sea-top: #030C18;
+  --dusk: #0A1124;
 }
 
 html { scroll-behavior: smooth; }
@@ -225,16 +227,17 @@ section { position: relative; }
 /* ABOUT */
 .about { display: grid; grid-template-columns: 250px 1fr; gap: 3.5rem; align-items: center; }
 .photo { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid var(--card); box-shadow: 0 0 0 3px var(--gold), 12px 12px 0 var(--coral); display: block; }
+.about > div { padding: 1.5rem 1.7rem; border: 1.5px solid var(--line); border-radius: 8px; background: color-mix(in srgb, var(--card) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(29,56,99,0.08); }
 .bio p + p { margin-top: 0.9rem; }
-.bio { color: var(--ink2); font-size: 1rem; }
+.bio { color: var(--ink); font-size: 1rem; font-weight: 500; }
 .bio strong { color: var(--ink); font-weight: 600; }
 .facts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
 .fact { font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.85rem; border: 1.5px solid var(--line); border-radius: 999px; background: var(--card); }
 .fact.open { border-color: var(--teal); color: var(--accent2); }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; text-align: center; }
-.stat { padding: 1.3rem 1rem; background: var(--card); border: 1.5px solid var(--line); border-radius: 6px; }
+.stat { padding: 1.3rem 1rem; background: color-mix(in srgb, var(--card) 92%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1.5px solid var(--line); border-radius: 6px; }
 .stat b { display: block; font-family: var(--script); font-weight: 400; font-size: 2.6rem; line-height: 1.1; color: var(--accent); }
-.stat span { font-size: 0.82rem; font-weight: 600; color: var(--ink3); }
+.stat span { font-size: 0.82rem; font-weight: 600; color: var(--ink2); }
 
 /* TECHNOLOGY */
 .tech { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
@@ -277,9 +280,13 @@ section { position: relative; }
 .band::after { content: ''; position: absolute; inset: -1px 0; pointer-events: none; background: linear-gradient(180deg, var(--bg) 0%, transparent 16%, transparent 88%, var(--bg) 100%); transition: background 0.4s; }
 .bay-moon { position: absolute; left: 60%; top: 10%; width: clamp(38px, 5vw, 84px); filter: drop-shadow(0 0 14px rgba(226,234,255,0.7)) drop-shadow(0 0 44px rgba(170,190,255,0.4)); opacity: 0; transform: translateY(120%); transition: transform 2.2s cubic-bezier(0.25, 0.6, 0.3, 1), opacity 1.2s ease; }
 [data-theme="dark"] .bay-moon { opacity: 1; transform: none; transition-delay: 0.5s; }
-.waterline { aspect-ratio: 2816 / 1536; background: var(--sea-top); margin-top: 2rem; }
-.waterline .day, .waterline .night { top: -1.5%; height: 103%; object-position: 50% 50%; transform: none; animation: swell 7s ease-in-out infinite alternate; }
-.waterline::after { background: linear-gradient(180deg, var(--bg) 0%, transparent 13%, transparent 78%, var(--sea-top) 100%); }
+.band .cap { position: absolute; z-index: 2; left: clamp(1.25rem, 5vw, 4rem); bottom: 17%; color: #fff; font-family: var(--script); font-size: clamp(1.3rem, 2.6vw, 2rem); line-height: 1.2; text-shadow: 0 2px 16px rgba(4,12,30,0.8); }
+.band .cap small { display: block; font: 600 0.78rem 'Montserrat', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.92; }
+.bay { margin-top: 3rem; }
+.bay::after { background: linear-gradient(180deg, var(--bg) 0%, transparent 16%, transparent 80%, var(--dusk) 100%); transition: none; }
+.waterline { aspect-ratio: 2816 / 1250; background: var(--sea-top); }
+.waterline .day, .waterline .night { top: -1.5%; height: 103%; object-position: 50% 22%; transform: none; animation: swell 7s ease-in-out infinite alternate; }
+.waterline::after { background: linear-gradient(180deg, var(--dusk) 0%, transparent 12%, transparent 76%, var(--sea-top) 100%); transition: none; }
 .waterline .rays { position: absolute; left: 0; right: 0; top: 40%; bottom: 0; mix-blend-mode: screen; background: radial-gradient(45% 80% at 55% 0%, rgba(150,225,255,0.28), transparent 70%); animation: shimmer 7s ease-in-out infinite alternate; }
 @keyframes swell { from { transform: translateY(0); } to { transform: translateY(-1.1%); } }
 
@@ -471,12 +478,6 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   </div>
 </section>
 
-<div class="band bay" data-parallax aria-hidden="true">
-  <img class="day" src="assets/bay-day.webp" alt="" loading="lazy" width="2920" height="1238">
-  <img class="night" src="assets/bay-night.webp" alt="" loading="lazy" width="2920" height="1238">
-  <img class="bay-moon" src="assets/moon.webp" alt="" loading="lazy" width="384" height="384">
-</div>
-
 <section id="experience">
   <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i><i class="fog"></i></div>
   <div class="wrap">
@@ -513,6 +514,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 <div class="band street" data-parallax aria-hidden="true">
   <img class="day" src="assets/street-day.webp" alt="" loading="lazy" width="2920" height="1238">
   <img class="night" src="assets/street-night.webp" alt="" loading="lazy" width="2920" height="1238">
+  <span class="cap">Hapon <small>Afternoon in old Vigan</small></span>
 </div>
 
 <section id="projects">
@@ -586,6 +588,12 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   </div>
 </section>
 
+<div class="band bay" data-parallax aria-hidden="true">
+  <img class="day" src="assets/bay-day.webp" alt="" loading="lazy" width="2920" height="1238">
+  <img class="night" src="assets/bay-night.webp" alt="" loading="lazy" width="2920" height="1238">
+  <span class="cap">Takipsilim <small>Sunset over Manila Bay</small></span>
+  <img class="bay-moon" src="assets/moon.webp" alt="" loading="lazy" width="384" height="384">
+</div>
 <div class="band waterline" aria-hidden="true">
   <img class="day" src="assets/waterline-day.webp" alt="" loading="lazy" width="2816" height="1536">
   <img class="night" src="assets/waterline-night.webp" alt="" loading="lazy" width="2816" height="1536">
