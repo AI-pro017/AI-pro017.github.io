@@ -199,35 +199,73 @@ section { position: relative; }
 .wrap { position: relative; max-width: 1100px; margin: 0 auto; padding: 5.5rem clamp(1.25rem, 5vw, 3rem); }
 .title { font-family: var(--script); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3rem); text-align: center; line-height: 1.2; }
 .title::after { content: ''; display: block; width: 70px; height: 10px; margin: 0.5rem auto 0; background: radial-gradient(circle at 5px 5px, var(--gold) 4.5px, transparent 5px) 0 0 / 20px 10px repeat-x; }
+.chap { display: block; text-align: center; margin-bottom: 0.35rem; font: 700 0.74rem 'Montserrat', sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
 .sub { text-align: center; color: var(--ink2); font-size: 0.95rem; max-width: 520px; margin: 0.8rem auto 0; }
 .body { margin-top: 3rem; }
 
-.sec-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.sec-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .sec-bg i { position: absolute; inset: 0; background: center / cover no-repeat; }
 .sec-bg .day { transition: opacity 2s ease, filter 2s ease; }
 .sec-bg::after { content: ''; position: absolute; inset: -1px 0; background: linear-gradient(180deg, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%); transition: background 0.4s; }
 .glass { background: color-mix(in srgb, var(--card) 86%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 
-#about .sec-bg .day { background-image: url(assets/map.webp); opacity: 0.46; animation: mapdrift 70s ease-in-out infinite alternate; }
-[data-theme="dark"] #about .sec-bg .day { filter: invert(1) brightness(0.9); opacity: 0.5; }
-@keyframes mapdrift { from { transform: scale(1) translateX(0); } to { transform: scale(1.09) translateX(-1.5%); } }
+@keyframes mapdrift { from { transform: scale(1); } to { transform: scale(1.07); } }
+#about .sec-bg i, #technology .sec-bg i, #projects .sec-bg i { animation: mapdrift 60s ease-in-out infinite alternate; }
+#about .sec-bg .day { background-image: url(assets/table-day.webp); }
+#about .sec-bg .night { background-image: url(assets/table-night.webp); }
+#about .sec-bg::before, #projects .sec-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(20,12,6,0.2), rgba(20,12,6,0.42)); }
+#about .wrap { padding-top: 8.5rem; padding-bottom: 8.5rem; }
+.letter, #about .stat {
+  --ink: #33251A; --ink2: rgba(51,37,26,0.92); --ink3: rgba(51,37,26,0.75); --line: rgba(96,64,30,0.38); --card: rgba(255,250,236,0.55); --accent: #A3301C; --accent2: #1C6A62;
+  color: var(--ink); background: linear-gradient(135deg, #F7ECD2 0%, #EEDDB6 55%, #E4CFA1 100%);
+  box-shadow: inset 0 0 46px rgba(128,86,34,0.3), inset 0 1px 0 rgba(255,255,255,0.55), 0 20px 44px rgba(0,0,0,0.5);
+  transition: filter 2s ease;
+}
+.letter { position: relative; padding: 2.2rem 2.4rem 2rem; border-radius: 3px 9px 4px 11px / 9px 3px 10px 4px; transform: rotate(-0.7deg); }
+.letter::before { content: ''; position: absolute; inset: 9px; border: 1px solid rgba(96,64,30,0.3); pointer-events: none; }
+.letter .chap, .letter .title { text-align: left; }
+.letter .title { font-size: clamp(2rem, 4vw, 2.7rem); margin-bottom: 1.1rem; }
+.letter .title::after { margin-left: 0; }
+[data-theme="dark"] .letter, [data-theme="dark"] #about .stat { filter: brightness(0.9) sepia(0.18); }
+#about .photo { width: 240px; height: 290px; border-radius: 2px; border: 11px solid #F5EBD3; border-bottom-width: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(96,64,30,0.3); transform: rotate(-3.2deg); filter: sepia(0.22) saturate(0.92); transition: transform 0.4s ease, filter 0.4s ease; }
+#about .photo:hover { transform: rotate(-1deg) scale(1.03); filter: none; }
+#about .stat { border: 0; border-radius: 3px; -webkit-backdrop-filter: none; backdrop-filter: none; }
+#about .stat:nth-child(1) { transform: rotate(-1.1deg); }
+#about .stat:nth-child(2) { transform: rotate(0.6deg); }
+#about .stat:nth-child(3) { transform: rotate(-0.5deg); }
 
-#technology .sec-bg .day { background-image: url(assets/capiz.webp); }
-[data-theme="dark"] #technology .sec-bg .day { filter: brightness(0.55) saturate(0.9); }
-#technology .sec-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; mix-blend-mode: screen; background: radial-gradient(60% 55% at 50% 50%, rgba(255,214,150,0.3), transparent 72%); animation: twinkle 7s ease-in-out infinite alternate; }
+#technology .sec-bg .day { background-image: url(assets/workshop-day.webp); }
+#technology .sec-bg .night { background-image: url(assets/workshop-night.webp); }
+#technology .sec-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(20,12,6,0.5) 0%, rgba(20,12,6,0.12) 34%, rgba(20,12,6,0.3) 100%); }
+#technology .chap { color: #FFD777; text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
+#technology .tech-card {
+  --ink: #FBF0D8; --line: rgba(255,236,200,0.3);
+  position: relative; color: var(--ink); border: 0; border-radius: 4px; padding: 1.6rem 1.7rem 1.5rem;
+  background:
+    radial-gradient(circle at 14px 14px, #2A190C 0 3px, rgba(255,230,190,0.25) 3.5px, transparent 4.5px), radial-gradient(circle at calc(100% - 14px) 14px, #2A190C 0 3px, rgba(255,230,190,0.25) 3.5px, transparent 4.5px),
+    repeating-linear-gradient(178deg, rgba(0,0,0,0) 0 7px, rgba(0,0,0,0.07) 7px 8px, rgba(255,255,255,0.03) 8px 9px),
+    linear-gradient(180deg, #6E4A2B 0%, #5C3C22 48%, #4C3019 100%);
+  box-shadow: inset 0 2px 0 rgba(255,225,180,0.22), inset 0 -3px 0 rgba(0,0,0,0.35), 0 18px 36px rgba(0,0,0,0.5);
+  -webkit-backdrop-filter: none; backdrop-filter: none; transition: transform 0.3s ease;
+}
+#technology .tech-card:hover { transform: translateY(-4px) rotate(-0.4deg); }
+#technology .tech-card h3 { color: #FFD777; text-shadow: 0 1px 0 rgba(0,0,0,0.5); }
+#technology .chip { background: rgba(255,240,210,0.13); border-color: rgba(255,236,200,0.34); color: #FBF0D8; }
+[data-theme="dark"] #technology .tech-card { filter: brightness(0.82); }
 #technology .wrap { padding-top: 8rem; padding-bottom: 8rem; }
 #technology .title { color: #FBF3E4; text-shadow: 0 2px 18px rgba(0,0,0,0.75); }
 
-#experience .sec-bg .day { background-image: url(assets/terraces-day.webp); opacity: 0.7; }
+#experience .sec-bg .day { background-image: url(assets/terraces-day.webp); }
 #experience .sec-bg .night { background-image: url(assets/terraces-night.webp); }
 [data-theme="dark"] #experience .sec-bg .day { opacity: 0; }
+#experience .title, #experience .sub { text-shadow: 0 0 18px var(--bg), 0 0 6px var(--bg); }
+#experience .sub { color: var(--ink); font-weight: 600; }
 #experience .sec-bg .fog { inset: 0 auto 0 0; width: 200%; opacity: 0.55; background: radial-gradient(ellipse 22% 30% at 15% 40%, rgba(255,255,255,0.9), transparent 70%), radial-gradient(ellipse 26% 26% at 42% 66%, rgba(255,255,255,0.8), transparent 70%), radial-gradient(ellipse 22% 30% at 65% 40%, rgba(255,255,255,0.9), transparent 70%), radial-gradient(ellipse 26% 26% at 92% 66%, rgba(255,255,255,0.8), transparent 70%); animation: glint 80s linear infinite; transition: opacity 2s ease; will-change: transform; }
 [data-theme="dark"] #experience .sec-bg .fog { opacity: 0.1; }
 
 /* ABOUT */
-.about { display: grid; grid-template-columns: 250px 1fr; gap: 3.5rem; align-items: center; }
+.about { display: grid; grid-template-columns: 262px 1fr; gap: 3.5rem; align-items: center; }
 .photo { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid var(--card); box-shadow: 0 0 0 3px var(--gold), 12px 12px 0 var(--coral); display: block; }
-.about > div { padding: 1.5rem 1.7rem; border: 1.5px solid var(--line); border-radius: 8px; background: color-mix(in srgb, var(--card) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(29,56,99,0.08); }
 .bio p + p { margin-top: 0.9rem; }
 .bio { color: var(--ink); font-size: 1rem; font-weight: 500; }
 .bio strong { color: var(--ink); font-weight: 600; }
@@ -247,8 +285,9 @@ section { position: relative; }
 .chip { font-size: 0.78rem; font-weight: 600; padding: 0.28rem 0.7rem; border-radius: 4px; border: 1.5px solid var(--line); background: var(--bg); }
 
 /* TIMELINE */
-.timeline { max-width: 780px; margin-left: auto; margin-right: auto; border-left: 2px dashed var(--line); padding-left: 2rem; }
-.job { position: relative; padding: 1.1rem 1.3rem; margin-bottom: 1.2rem; border: 1.5px solid var(--line); border-radius: 6px; background: color-mix(in srgb, var(--card) 86%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.timeline { max-width: 780px; margin-left: auto; margin-right: auto; border-left: 2px dashed color-mix(in srgb, var(--ink) 45%, transparent); padding-left: 2rem; }
+.job { position: relative; padding: 1.1rem 1.3rem; margin-bottom: 1.2rem; border: 1.5px solid var(--line); border-radius: 6px; background: color-mix(in srgb, var(--card) 68%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); border-color: color-mix(in srgb, #fff 45%, transparent); box-shadow: 0 14px 34px rgba(20,40,60,0.18); transition: transform 0.3s ease; }
+.job:hover { transform: translateX(6px); }
 .job:last-child { margin-bottom: 0; }
 .job::before { content: ''; position: absolute; left: calc(-2rem - 10px); top: 1.3rem; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--gold); }
 .job .when { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
@@ -274,6 +313,16 @@ section { position: relative; }
 .proj.more b { font-family: var(--script); font-weight: 400; font-size: 1.6rem; }
 .proj.more span { font-size: 0.86rem; color: var(--ink2); }
 
+#projects .sec-bg .day { background-image: url(assets/street-day.webp); }
+#projects .sec-bg .night { background-image: url(assets/street-night.webp); }
+#projects .wrap { padding-top: 8.5rem; padding-bottom: 8.5rem; }
+#projects .title, #projects .sub { color: #fff; text-shadow: 0 2px 16px rgba(4,8,20,0.85); }
+#projects .chap { color: #FFD777; text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
+#projects .proj { border: 8px solid #5A3B22; border-image: linear-gradient(135deg, #7C5434 0%, #4A2E18 45%, #6C4829 100%) 1; border-radius: 0; box-shadow: 0 0 0 1.5px #24150A, 0 20px 40px rgba(0,0,0,0.55); }
+#projects .proj:hover { transform: translateY(-8px); box-shadow: 0 0 0 1.5px #24150A, 0 30px 54px rgba(0,0,0,0.6), 0 0 34px rgba(255,200,110,0.35); }
+#projects .proj img { border-bottom: 5px solid #5A3B22; }
+#projects .proj.more { background: color-mix(in srgb, var(--card) 82%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
 /* PAINTED BANDS */
 .band { position: relative; overflow: hidden; aspect-ratio: 2920 / 1238; min-height: 300px; background: #0C1830; }
 .band .day, .band .night { position: absolute; left: 0; top: -8%; width: 100%; height: 116%; max-width: none; object-fit: cover; object-position: 50% 60%; transform: translateY(calc((var(--p, 0.5) - 0.5) * 12%)); will-change: transform; }
@@ -282,7 +331,7 @@ section { position: relative; }
 [data-theme="dark"] .bay-moon { opacity: 1; transform: none; transition-delay: 0.5s; }
 .band .cap { position: absolute; z-index: 2; left: clamp(1.25rem, 5vw, 4rem); bottom: 17%; color: #fff; font-family: var(--script); font-size: clamp(1.3rem, 2.6vw, 2rem); line-height: 1.2; text-shadow: 0 2px 16px rgba(4,12,30,0.8); }
 .band .cap small { display: block; font: 600 0.78rem 'Montserrat', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.92; }
-.bay { margin-top: 3rem; }
+.bay { margin-top: 0; }
 .bay::after { background: linear-gradient(180deg, var(--bg) 0%, transparent 16%, transparent 80%, var(--dusk) 100%); transition: none; }
 .waterline { aspect-ratio: 2816 / 1250; background: var(--sea-top); }
 .waterline .day, .waterline .night { top: -1.5%; height: 103%; object-position: 50% 22%; transform: none; animation: swell 7s ease-in-out infinite alternate; }
@@ -318,6 +367,7 @@ section { position: relative; }
 #contact::after { content: ''; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(50% 38% at 50% 42%, rgba(130,215,255,0.2), transparent 72%); animation: shimmer 7s ease-in-out infinite alternate; }
 @keyframes shimmer { from { opacity: 0.3; transform: translateX(-3%); } to { opacity: 1; transform: translateX(3%); } }
 .contact { text-shadow: 0 2px 14px rgba(2,12,26,0.7); }
+#contact .chap { color: #7FD8E8; }
 .contact .email, .contact .btn { text-shadow: none; }
 
 /* FOOTER */
@@ -345,8 +395,10 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   .waterline { height: 96vw; }
   .timeline { padding-left: 1.5rem; }
   .job::before { left: calc(-1.5rem - 10px); }
-  .about { grid-template-columns: 1fr; gap: 2.2rem; justify-items: center; }
-  .photo { width: 200px; height: 200px; }
+  .about { grid-template-columns: 1fr; gap: 2.4rem; justify-items: center; }
+  #about .photo { width: 200px; height: 242px; }
+  .letter { padding: 1.7rem 1.4rem 1.5rem; transform: none; }
+  #about .wrap, #technology .wrap, #projects .wrap { padding-top: 6rem; padding-bottom: 6rem; }
   .projects { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
@@ -423,13 +475,14 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 
 <main>
 <section id="about">
-  <div class="sec-bg" aria-hidden="true"><i class="day"></i></div>
+  <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i></div>
   <div class="wrap">
-    <h2 class="title r">About Me</h2>
     <div class="body">
       <div class="about r">
         <img class="photo" src="assets/profile.webp" alt="Jaed Nakpil" width="250" height="250">
-        <div>
+        <div class="letter">
+          <span class="chap">Umaga · Morning</span>
+          <h2 class="title">About Me</h2>
           <div class="bio">
             <p>I'm a <strong>Senior AI Engineer</strong> with over 10 years of experience building full-stack systems and production AI applications. Currently at <strong>BlastAsia, Inc.</strong> designing and deploying intelligent systems that solve real problems at scale.</p>
             <p>My career spans Singapore and the Philippines, working remotely with <strong>Kinobi AI</strong> and <strong>Pigeon Labs</strong> and shipping AI-powered products used in production. I build things that hold up: RAG pipelines, multi-agent systems, full-stack SaaS, and event-driven backends.</p>
@@ -452,8 +505,9 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 </section>
 
 <section id="technology">
-  <div class="sec-bg" aria-hidden="true"><i class="day"></i></div>
+  <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i></div>
   <div class="wrap">
+    <span class="chap r">Bago magtanghali · The workshop</span>
     <h2 class="title r">Technology</h2>
     <div class="body">
       <div class="tech r">
@@ -481,6 +535,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 <section id="experience">
   <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i><i class="fog"></i></div>
   <div class="wrap">
+    <span class="chap r">Tanghali · Midday</span>
     <h2 class="title r">Experience</h2>
     <p class="sub r">10+ years across AI product companies and enterprise teams in Singapore and the Philippines.</p>
     <div class="body timeline r">
@@ -511,14 +566,10 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   </div>
 </section>
 
-<div class="band street" data-parallax aria-hidden="true">
-  <img class="day" src="assets/street-day.webp" alt="" loading="lazy" width="2920" height="1238">
-  <img class="night" src="assets/street-night.webp" alt="" loading="lazy" width="2920" height="1238">
-  <span class="cap">Hapon <small>Afternoon in old Vigan</small></span>
-</div>
-
 <section id="projects">
+  <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i></div>
   <div class="wrap">
+    <span class="chap r">Hapon · Afternoon in old Vigan</span>
     <h2 class="title r">Projects</h2>
     <p class="sub r">Production projects with real code, real users and real problems solved.</p>
     <div class="body projects">
@@ -603,6 +654,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 <section id="contact">
   <div class="sec-bg" aria-hidden="true"><i class="day"></i><i class="night"></i><div class="bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
   <div class="wrap contact">
+    <span class="chap r">Gabi · Night</span>
     <h2 class="title r">Tara, let's build something</h2>
     <p class="sub r">Open to senior AI engineering roles, AI consulting, and interesting product collaborations. I reply same-day.</p>
     <a href="mailto:jaednakpil04@gmail.com" class="email r">jaednakpil04@gmail.com</a>
