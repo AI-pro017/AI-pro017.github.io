@@ -127,11 +127,6 @@ a { color: inherit; }
 @keyframes twinkle { from { opacity: 0.25; } to { opacity: 1; } }
 [data-theme="dark"] .glints { opacity: 0.22; }
 
-.boat { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: calc(var(--w) * 1%); height: calc(var(--h) * 1%); transform-origin: 50% 92%; animation: heave 6s ease-in-out infinite; will-change: transform; }
-.boat::before, .boat::after { content: ''; position: absolute; inset: 0; background: url(assets/hero-day.webp) no-repeat; background-size: calc(10000% / var(--w)) calc(10000% / var(--h)); background-position: calc(var(--x) / (100 - var(--w)) * 100%) calc(var(--y) / (100 - var(--h)) * 100%); }
-.boat::after { background-image: url(assets/hero-night.webp); opacity: 0; transition: opacity 2s ease; }
-[data-theme="dark"] .boat::after { opacity: 1; }
-@keyframes heave { 0%, 100% { transform: translateY(var(--a)) rotate(calc(var(--r) * -1)); } 50% { transform: translateY(calc(var(--a) * -1)) rotate(var(--r)); } }
 .sail { position: absolute; left: 53.2%; bottom: 5.5%; width: 9.5%; }
 .sail img { display: block; width: 100%; max-width: none; transform-origin: 50% 90%; animation: bob 5.5s ease-in-out infinite; filter: drop-shadow(0 4px 6px rgba(6,24,50,0.35)); transition: filter 2s ease; }
 @keyframes bob { 0%, 100% { transform: translateY(1.3%) rotate(-1.6deg); } 50% { transform: translateY(-1.5%) rotate(1.6deg); } }
@@ -416,7 +411,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .parol, .stage, .orb .sun::after, #contact::after, .smoke i, .glints::before, .glints::after, .boat, .sail img, .birds, .birds svg, .sec-bg i, .sec-bg::before, .waterline .day, .waterline .night, .waterline .rays, .bubbles i { animation: none; }
+  .parol, .stage, .orb .sun::after, #contact::after, .smoke i, .glints::before, .glints::after, .sail img, .birds, .birds svg, .sec-bg i, .sec-bg::before, .waterline .day, .waterline .night, .waterline .rays, .bubbles i { animation: none; }
   .band .day, .band .night { transform: none; }
   .birds, .smoke { display: none; }
   .r { opacity: 1; transform: none; transition: none; }
@@ -454,13 +449,6 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
       <img class="night" src="assets/hero-night.webp" alt="" width="2920" height="1238">
       <div class="fx smoke"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="fx glints"></div>
-      <i class="fx boat" style="--x:3.836;--y:77.221;--w:5.753;--h:12.278;--a:2.37%;--r:0.60deg;animation-duration:5.2s;animation-delay:-1.3s;clip-path:polygon(26.2% 0.0%, 83.3% 42.1%, 81.0% 65.8%, 100.0% 78.9%, 95.2% 100.0%, 0.0% 100.0%, 0.0% 78.9%, 7.1% 52.6%)"></i>
-      <i class="fx boat" style="--x:9.589;--y:61.712;--w:15.616;--h:33.603;--a:1.44%;--r:0.50deg;animation-duration:6.4s;animation-delay:0.0s;clip-path:polygon(36.0% 0.0%, 43.9% 4.8%, 65.8% 15.9%, 81.6% 49.0%, 92.1% 76.0%, 100.0% 92.8%, 99.1% 100.0%, 0.0% 100.0%, 0.0% 92.3%, 15.8% 79.8%, 5.3% 72.1%, 11.0% 61.5%)"></i>
-      <i class="fx boat" style="--x:25.479;--y:73.990;--w:7.260;--h:16.801;--a:2.31%;--r:0.60deg;animation-duration:5.6s;animation-delay:-2.6s;clip-path:polygon(29.2% 0.0%, 41.5% 5.8%, 75.5% 36.5%, 83.0% 59.6%, 100.0% 78.8%, 98.1% 100.0%, 0.0% 100.0%, 1.9% 84.6%, 0.0% 67.3%)"></i>
-      <i class="fx boat" style="--x:43.151;--y:81.422;--w:3.151;--h:7.108;--a:2.73%;--r:0.50deg;animation-duration:4.8s;animation-delay:-0.8s;clip-path:polygon(43.5% 0.0%, 100.0% 59.1%, 100.0% 100.0%, 0.0% 100.0%, 0.0% 27.3%)"></i>
-      <i class="fx boat" style="--x:46.575;--y:86.268;--w:7.945;--h:5.170;--a:6.25%;--r:0.70deg;animation-duration:4.4s;animation-delay:-3.1s;clip-path:polygon(20.7% 0.0%, 36.2% 0.0%, 39.7% 37.5%, 100.0% 37.5%, 94.8% 100.0%, 0.0% 100.0%, 3.4% 37.5%)"></i>
-      <i class="fx boat" style="--x:62.740;--y:89.176;--w:12.055;--h:4.523;--a:3.57%;--r:0.25deg;animation-duration:5.0s;animation-delay:-1.9s;clip-path:polygon(0.0% 0.0%, 96.6% 0.0%, 100.0% 28.6%, 100.0% 100.0%, 3.4% 100.0%)"></i>
-      <i class="fx boat" style="--x:81.507;--y:89.176;--w:14.932;--h:6.462;--a:3.00%;--r:0.25deg;animation-duration:5.8s;animation-delay:-4.2s;clip-path:polygon(0.0% 20.0%, 59.6% 10.0%, 71.1% 0.0%, 96.3% 20.0%, 100.0% 95.0%, 2.8% 100.0%)"></i>
       <div class="fx sail"><img src="assets/vinta.webp" alt="" width="767" height="667"></div>
     </div>
     <div class="birds"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 0 12 6 Q18 0 23 7"/></svg><svg viewBox="0 0 24 10"><path d="M1 7 Q6 0 12 6 Q18 0 23 7"/></svg><svg viewBox="0 0 24 10"><path d="M1 7 Q6 0 12 6 Q18 0 23 7"/></svg><svg viewBox="0 0 24 10"><path d="M1 7 Q6 0 12 6 Q18 0 23 7"/></svg><svg viewBox="0 0 24 10"><path d="M1 7 Q6 0 12 6 Q18 0 23 7"/></svg></div>
