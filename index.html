@@ -389,41 +389,40 @@ section { position: relative; }
 .job p { margin-top: 0.6rem; font-size: 0.93rem; color: var(--ink2); }
 
 /* PROJECTS */
-.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-.proj { display: flex; flex-direction: column; background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px; overflow: hidden; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
-.proj:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--coral); }
-.proj:nth-child(3n+2):hover { box-shadow: 8px 8px 0 var(--gold); }
-.proj:nth-child(3n):hover { box-shadow: 8px 8px 0 var(--teal); }
-.proj img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1.5px solid var(--ink); }
-.proj-body { padding: 1.15rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
-.proj .cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
-.proj h3 { font-size: 1.15rem; font-weight: 700; margin: 0.2rem 0 0.4rem; }
-.proj p { font-size: 0.86rem; color: var(--ink2); flex: 1; }
-.proj .chips { margin: 0.9rem 0; }
-.proj .src { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 700; }
-.proj.more { align-items: center; justify-content: center; text-align: center; padding: 2rem 1.5rem; border-style: dashed; gap: 0.7rem; min-height: 220px; }
-.proj.more b { font-family: var(--script); font-weight: 400; font-size: 1.6rem; }
-.proj.more span { font-size: 0.86rem; color: var(--ink2); }
+.projects { display: flex; flex-direction: column; gap: 6rem; }
+.proj { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; text-decoration: none; }
+.proj img { grid-column: 1 / 8; grid-row: 1; width: 100%; aspect-ratio: 1200 / 750; object-fit: cover; display: block; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.proj-body { grid-column: 8 / 13; grid-row: 1; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.proj:nth-child(even) img { grid-column: 6 / 13; }
+.proj:nth-child(even) .proj-body { grid-column: 1 / 6; align-items: flex-start; text-align: left; }
+.proj .cat { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
+.proj h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 700; line-height: 1.2; margin: 0.25rem 0 1.1rem; }
+.proj p { font-size: 0.95rem; line-height: 1.65; padding: 1.35rem 1.5rem; background: var(--card); color: var(--ink2); border-radius: 4px; margin-left: -3.5rem; }
+.proj:nth-child(even) p { margin-left: 0; margin-right: -3.5rem; }
+.proj .chips { margin: 1.1rem 0 1rem; justify-content: flex-end; max-width: 26rem; }
+.proj:nth-child(even) .chips { justify-content: flex-start; }
+.proj .src { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; font-weight: 700; border-bottom: 2px solid transparent; transition: border-color 0.2s; }
+.proj:hover .src { border-bottom-color: currentColor; }
 
 #projects .sec-bg .day { background-image: url(assets/street-day.webp); }
 #projects .sec-bg .night { background-image: url(assets/street-night.webp); }
 #projects .sec-bg::before { background: linear-gradient(180deg, rgba(20,12,6,0.62) 0%, rgba(20,12,6,0.5) 22%, rgba(20,12,6,0.26) 48%, rgba(20,12,6,0.42) 100%); }
 #experience .sec-bg, #projects .sec-bg { clip-path: inset(0); }
 #experience .sec-bg .day, #experience .sec-bg .night, #projects .sec-bg .day, #projects .sec-bg .night { position: fixed; inset: 0 0 auto 0; height: 100vh; height: 100lvh; }
-#projects .wrap { padding-top: 8.5rem; padding-bottom: 8.5rem; }
+#projects .wrap { max-width: 1240px; padding-top: 8.5rem; padding-bottom: 8.5rem; }
 #projects .title, #projects .sub { color: #fff; text-shadow: 0 2px 16px rgba(4,8,20,0.85); }
 #projects .chap { color: #FFD777; text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
-#projects .proj { border: 8px solid #5A3B22; border-image: linear-gradient(135deg, #7C5434 0%, #4A2E18 45%, #6C4829 100%) 1; border-radius: 0; box-shadow: 0 0 0 1.5px #24150A, 0 20px 40px rgba(0,0,0,0.55); }
-#projects .proj:hover { transform: translateY(-8px); box-shadow: 0 0 0 1.5px #24150A, 0 30px 54px rgba(0,0,0,0.6), 0 0 34px rgba(255,200,110,0.35); }
-#projects .proj img { border-bottom: 5px solid #5A3B22; }
-#projects .proj.more { background: color-mix(in srgb, var(--card) 82%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-#projects .proj img { aspect-ratio: 1200 / 750; }
-#projects .proj.more-hidden { display: none; }
-#projects.show-more .proj.more-hidden { display: flex; }
-.projects-more { display: flex; justify-content: center; margin-top: 2rem; }
-.btn-more { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; color: #FBF0D8; background: color-mix(in srgb, #2B1B0D 90%, transparent); border: 2px solid #7C5434; padding: 0.75rem 1.6rem; border-radius: 3px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.btn-more:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.4); background: color-mix(in srgb, #3A2614 90%, transparent); }
-#projects.show-more .btn-more { display: none; }
+#projects .proj img { border: 8px solid #5A3B22; border-image: linear-gradient(135deg, #7C5434 0%, #4A2E18 45%, #6C4829 100%) 1; box-shadow: 0 0 0 1.5px #24150A, 0 22px 44px rgba(0,0,0,0.6); }
+#projects .proj:hover img { transform: translateY(-8px); box-shadow: 0 0 0 1.5px #24150A, 0 32px 58px rgba(0,0,0,0.65), 0 0 38px rgba(255,200,110,0.38); }
+#projects .proj .cat { color: #FFD777; text-shadow: 0 1px 10px rgba(0,0,0,0.85); }
+#projects .proj h3 { color: #fff; text-shadow: 0 2px 16px rgba(4,8,20,0.9); }
+#projects .proj p { box-shadow: 0 0 0 1.5px #24150A, 0 16px 34px rgba(0,0,0,0.5); border-left: 5px solid #7C5434; }
+#projects .proj:nth-child(odd) p { border-left: 0; border-right: 5px solid #7C5434; }
+#projects .proj .chip { background: rgba(28,17,8,0.72); border-color: rgba(255,236,200,0.34); color: #FBF0D8; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+#projects .proj .src { color: #FFD777; text-shadow: 0 1px 10px rgba(0,0,0,0.85); }
+#projects .proj.r { transform: translateX(-90px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+#projects .proj.r:nth-child(even) { transform: translateX(90px); }
+#projects .proj.r.on { transform: none; }
 
 
 /* PAINTED BANDS */
@@ -502,10 +501,17 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   #about .photo { width: 200px; height: 242px; }
   .letter { padding: 1.7rem 1.4rem 1.5rem; transform: none; }
   #about .wrap, #technology .wrap, #projects .wrap { padding-top: 6rem; padding-bottom: 6rem; }
-  .projects { grid-template-columns: repeat(2, 1fr); }
+  .projects { gap: 4rem; }
+  .proj, .proj:nth-child(even) { display: flex; flex-direction: column; align-items: stretch; }
+  .proj-body, .proj:nth-child(even) .proj-body { align-items: flex-start; text-align: left; margin-top: 1.3rem; }
+  .proj .chips { justify-content: flex-start; max-width: none; }
+  .proj p, .proj:nth-child(even) p { margin-left: 0; margin-right: 0; }
+  #projects .proj p, #projects .proj:nth-child(odd) p { border-right: 0; border-left: 5px solid #7C5434; }
+  #projects .proj.r, #projects .proj.r:nth-child(even) { transform: translateY(24px); }
+  #projects .proj.r.on { transform: none; }
 }
 @media (max-width: 620px) {
-  .projects, .tech { grid-template-columns: 1fr; }
+  .tech { grid-template-columns: 1fr; }
   .stats { gap: 0.5rem; }
   .stat { padding: 1rem 0.4rem; }
   .stat b { font-size: 2rem; }
@@ -518,7 +524,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   .parol, .stage, .orb .sun::after, #contact::after, .smoke i, .glints::before, .glints::after, .boat img, .birds, .birds svg, .sec-bg i, .sec-bg::before, .waterline .day, .waterline .night, .waterline .rays, .bubbles i { animation: none; }
   .band .day, .band .night { transform: none; }
   .birds, .smoke { display: none; }
-  .r { opacity: 1; transform: none; transition: none; }
+  .r, #projects .proj.r, #projects .proj.r:nth-child(even) { opacity: 1; transform: none; transition: none; }
 }
 </style>
 </head>
@@ -679,7 +685,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
   <div class="wrap">
     <span class="chap r">Hapon · Afternoon in old Vigan</span>
     <h2 class="title r">Projects</h2>
-    <p class="sub r">A selection of AI products and agents I've shipped or contributed to. Every card links to the live site.</p>
+    <p class="sub r">A selection of AI products and agents I've shipped or contributed to. Each one links to the live site.</p>
     <div class="body projects" id="projGrid">
 
       <a href="https://circleback.ai/" target="_blank" rel="noopener" class="proj r">
@@ -700,17 +706,6 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
           <h3>Spinach</h3>
           <p>AI standup facilitator that joins the call, writes the summary, and ships action items straight into Jira, Linear and Slack. Accurate transcripts and summaries across 100+ languages.</p>
           <div class="chips"><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">OpenAI</span><span class="chip">Deepgram</span><span class="chip">Jira API</span><span class="chip">Slack API</span></div>
-          <span class="src"><svg width="14" height="14"><use href="#i-ext"/></svg>Visit site</span>
-        </div>
-      </a>
-
-      <a href="https://www.magicpatterns.com/" target="_blank" rel="noopener" class="proj r">
-        <img src="assets/proj-magicpatterns.webp" alt="Magic Patterns product screenshot" loading="lazy" width="1200" height="750">
-        <div class="proj-body">
-          <div class="cat">Design AI · Developer Tools</div>
-          <h3>Magic Patterns</h3>
-          <p>Describe a UI in natural language and get a real React component you can ship. Codebase-aware prototyping with a design system, inline edits and an agent connected to your repo.</p>
-          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Claude</span><span class="chip">Tailwind</span><span class="chip">LLM Agents</span><span class="chip">Monaco</span></div>
           <span class="src"><svg width="14" height="14"><use href="#i-ext"/></svg>Visit site</span>
         </div>
       </a>
@@ -748,7 +743,7 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
         </div>
       </a>
 
-      <a href="https://www.hedra.com/" target="_blank" rel="noopener" class="proj r more-hidden">
+      <a href="https://www.hedra.com/" target="_blank" rel="noopener" class="proj r">
         <img src="assets/proj-hedra.webp" alt="Hedra product screenshot" loading="lazy" width="1200" height="750">
         <div class="proj-body">
           <div class="cat">Generative Video · Inference</div>
@@ -759,31 +754,6 @@ footer small { font-size: 0.78rem; font-weight: 500; opacity: 0.8; }
         </div>
       </a>
 
-      <a href="https://www.blockadelabs.com/" target="_blank" rel="noopener" class="proj r more-hidden">
-        <img src="assets/proj-blockade.webp" alt="Blockade Labs product screenshot" loading="lazy" width="1200" height="750">
-        <div class="proj-body">
-          <div class="cat">Generative 3D · Games & VR</div>
-          <h3>Blockade Labs</h3>
-          <p>Skybox AI: a 360° environment generator for games and VR studios. Prompt-to-immersive world in seconds, with 32-bit HDRI lighting output you can drop straight into a scene.</p>
-          <div class="chips"><span class="chip">Stable Diffusion</span><span class="chip">Three.js</span><span class="chip">WebGL</span><span class="chip">Python</span><span class="chip">HDRI</span><span class="chip">Unity SDK</span></div>
-          <span class="src"><svg width="14" height="14"><use href="#i-ext"/></svg>Visit site</span>
-        </div>
-      </a>
-
-      <a href="https://www.eraser.io/" target="_blank" rel="noopener" class="proj r more-hidden">
-        <img src="assets/proj-eraser.webp" alt="Eraser product screenshot" loading="lazy" width="1200" height="750">
-        <div class="proj-body">
-          <div class="cat">Developer Tools · Agents</div>
-          <h3>Eraser</h3>
-          <p>AI-native architecture platform. Architecture models, maps, agents and harnesses grounded in your own cloud, code, CMDB and spreadsheets. Not a drawing tool, a live system map.</p>
-          <div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Claude</span><span class="chip">Postgres</span><span class="chip">D3.js</span><span class="chip">AWS SDK</span></div>
-          <span class="src"><svg width="14" height="14"><use href="#i-ext"/></svg>Visit site</span>
-        </div>
-      </a>
-
-    </div>
-    <div class="projects-more">
-      <button type="button" id="projMore" class="btn-more">Show more projects</button>
     </div>
 </div>
 </section>
@@ -853,8 +823,6 @@ const parallax = () => {
 };
 window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(parallax); } }, { passive: true });
 parallax();
-const projMore = document.getElementById("projMore");
-if (projMore) projMore.addEventListener("click", () => document.getElementById("projects").classList.add("show-more"));
 
 
 const hero = document.getElementById('home');
